@@ -1,3 +1,5 @@
+# Mass-Conserving Perceptron (MCP) HyMod Architecture Model Zoo
+
 This repository organizes the research code accompanying Wang & Gupta (2024) into a documented collection of mass-conserving-perceptron (MCP) models. The implementations were originally released on [Zenodo](https://zenodo.org/records/13840681) and have since been cleaned, refactored, and reorganized with assistance from OpenAI's ChatGPT (GPT-6.1 Sol, High reasoning mode).
 
 The collection includes six progressively more complex MCP-based architectures that explore alternative representations of catchment storage and flow. These include a HyMod-like configuration inspired by Boyle (2000), with two flow pathways (surface and subsurface flow) and three storage elements (soil moisture, groundwater, and surface routing), along with variants incorporating input bypass and groundwater mass relaxation.
