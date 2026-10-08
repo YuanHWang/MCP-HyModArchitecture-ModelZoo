@@ -1,8 +1,16 @@
 # Mass-Conserving Perceptron (MCP) HyMod Architecture Model Zoo
 
-This repository organizes the research code accompanying Wang & Gupta (2024) into a documented collection of mass-conserving-perceptron (MCP) models. The implementations were originally released on [Zenodo](https://zenodo.org/records/13840681) and have since been cleaned, refactored, and reorganized with assistance from OpenAI's ChatGPT (GPT-6.1 Sol, High reasoning mode).
+This repository organizes the research code accompanying Wang & Gupta (2024) into a documented collection of mass-conserving-perceptron (MCP) models. The implementations were originally released on [Zenodo](https://zenodo.org/records/13840681) and have since been cleaned, refactored, and reorganized with assistance from OpenAI's ChatGPT (GPT-6.1 Sol, Max intelligence mode).
 
-The collection includes six progressively more complex MCP-based architectures that explore alternative representations of catchment storage and flow. These include a HyMod-like configuration inspired by Boyle (2000), with two flow pathways (surface and subsurface flow) and three storage elements (soil moisture, groundwater, and surface routing), along with variants incorporating input bypass and groundwater mass relaxation.
+The collection includes six progressively more complex MCP-based architectures, in which nodes represent physically interpretable conceptual state variables and links represent flow pathways. It also includes variants incorporating input bypass and groundwater mass relaxation.
+
+The conceptual reference is the three-tank, two-flow-path HyMod-like structure inspired by Boyle (2000), as illustrated in Figure 1. The three tanks represent soil-moisture storage, surface-routing storage, and groundwater storage, while the two flow pathways represent surface and subsurface flow.
+
+![Three-tank, two-flow-path HyMod-like MCP architecture](Figure1.png)
+
+*Figure 1. MCP representation of the three-tank, two-flow-path HyMod-like conceptual structure adopted in this study.*
+
+**Note:** HyMod has several versions that differ in the number and arrangement of storage and routing elements. This study adopts the three-tank, two-flow-path representation shown in Figure 1 as its conceptual reference, with MCP gating functions used to describe the storage and flow processes.
 
 The repository also provides cleaned training and evaluation scripts, historical model checkpoints, standardized model notation, and documented execution conventions to support experiment reproduction, continued training, fine-tuning, and further model development.
 
