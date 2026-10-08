@@ -1,0 +1,14 @@
+name: MCP-SingleNode-ModelZoo
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - notebook
+  - pip:
+      - numpy==2.2.2
+      - pandas==2.2.3
+      - torch==2.9.0
+      - torchvision==0.24.0
+      - tqdm==4.67.1
+      - scikit-learn==1.6.1
