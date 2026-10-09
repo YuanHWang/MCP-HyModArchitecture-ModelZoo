@@ -131,7 +131,7 @@ This command evaluates the checkpoint without updating its parameters and export
 
 For MA₁, both scripts default to `model_epoch27.pt` if `--checkpoint` is omitted. Relative checkpoint paths are resolved from the script's folder. For other architectures, use the corresponding scripts and compatible checkpoints in their model folders.
 
-## References
+## References & Citation
 
 Readers should consult the original paper for the formal model names, notation, and mathematical definitions associated with each MCP variant.
 
