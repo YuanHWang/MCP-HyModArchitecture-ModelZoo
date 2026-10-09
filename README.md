@@ -52,6 +52,17 @@ The conceptual reference is the three-tank, two-flow-path HyMod-like structure i
 
 ## MCP-Based Model Architectures
 
+
+| Model | Storage states | Streamflow pathways | Conceptual representation |
+| :--- | :---: | :---: | :--- |
+| MA₁ | 1 | 1 | Soil-moisture storage only |
+| MA₂ | 1 | 2 | Soil-moisture storage with two outlet flow pathways |
+| MA₃ | 2 | 1 | Soil-moisture storage followed by surface routing |
+| MA₄ | 2 | 2 | Soil-moisture and groundwater storage |
+| MA₅ | 3 | 2 | Soil-moisture, surface-routing, and groundwater storage |
+| MA₆ | 3 | 3 | MA₅ with an additional direct overland-flow pathway |
+
+
 Figure 2 presents the six main MCP-based model architectures, MA₁–MA₆. Each node represents a physically interpretable conceptual storage state, while the links represent water transfers and flow pathways.
 
 Compared with conventional conceptual models, these architectures replace time-constant coefficients for flow partitioning and storage release with time-variable gating functions that respond to the evolving states and relevant inputs. The parameters defining these functions remain fixed during evaluation, while the gate values vary over time.
@@ -66,26 +77,13 @@ Figure 3 illustrates how a catchment can be conceptualized as a graph, with node
 
 *Figure 3. Simplified conceptual representations of MA₁–MA₆, showing their storage elements and streamflow pathways.*
 
-
-
-| Model | Storage states | Streamflow pathways | Conceptual representation |
-| :--- | :---: | :---: | :--- |
-| MA₁ | 1 | 1 | Soil-moisture storage only |
-| MA₂ | 1 | 2 | Soil-moisture storage with two outlet flow pathways |
-| MA₃ | 2 | 1 | Soil-moisture storage followed by surface routing |
-| MA₄ | 2 | 2 | Soil-moisture and groundwater storage |
-| MA₅ | 3 | 2 | Soil-moisture, surface-routing, and groundwater storage |
-| MA₆ | 3 | 3 | MA₅ with an additional direct overland-flow pathway |
-
-
-
-Additional variants incorporate input bypass and groundwater mass relaxation.
-
 ### Progressive Model Development
 
 The models were developed and trained progressively. Parameters for components retained from earlier architectures were initialized with their previously trained values. Newly introduced components received new parameter initializations, and both inherited and new parameters were adjusted during training.
 
 For example, MA₅ inherited initial parameter values for its soil-moisture, surface-routing, and groundwater components from MA₂, MA₃, and MA₄, respectively.
+
+Additional variants incorporate input bypass and groundwater mass relaxation.
 
 ### Input-Bypass Variants
 
