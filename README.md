@@ -66,6 +66,8 @@ Figure 3 illustrates how a catchment can be conceptualized as a graph, with node
 
 *Figure 3. Simplified conceptual representations of MA₁–MA₆, showing their storage elements and streamflow pathways.*
 
+
+
 | Model | Storage states | Streamflow pathways | Conceptual representation |
 | :--- | :---: | :---: | :--- |
 | MA₁ | 1 | 1 | Soil-moisture storage only |
@@ -74,6 +76,8 @@ Figure 3 illustrates how a catchment can be conceptualized as a graph, with node
 | MA₄ | 2 | 2 | Soil-moisture and groundwater storage |
 | MA₅ | 3 | 2 | Soil-moisture, surface-routing, and groundwater storage |
 | MA₆ | 3 | 3 | MA₅ with an additional direct overland-flow pathway |
+
+
 
 Additional variants incorporate input bypass and groundwater mass relaxation.
 
