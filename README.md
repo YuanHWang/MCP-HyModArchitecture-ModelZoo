@@ -2,31 +2,6 @@
 
 This repository organizes the research code accompanying Wang & Gupta (2024) into a documented collection of mass-conserving-perceptron (MCP) models. The implementations were originally released on [Zenodo](https://zenodo.org/records/13840681) and have since been cleaned, refactored, and reorganized with assistance from OpenAI's ChatGPT (GPT-6.1 Sol, Max intelligence mode).
 
-The collection includes six progressively more complex MCP-based architectures, in which nodes represent physically interpretable conceptual state variables and links represent flow pathways. It also includes variants incorporating input bypass and groundwater mass relaxation.
-
-The conceptual reference is the three-tank, two-flow-path HyMod-like structure inspired by Boyle (2000), as illustrated in Figure 1. The three tanks represent soil-moisture storage, surface-routing storage, and groundwater storage, while the two flow pathways represent surface and subsurface flow.
-
-![Three-tank, two-flow-path HyMod-like MCP architecture](Figure1.png)
-
-*Figure 1. MCP representation of the three-tank, two-flow-path HyMod-like conceptual structure adopted in this study.*
-
-**Note:** HyMod has several versions that differ in the number and arrangement of storage and routing elements. This study adopts the three-tank, two-flow-path representation shown in Figure 1 as its conceptual reference, with MCP gating functions used to describe the storage and flow processes.
-
-The repository also provides cleaned training and evaluation scripts, historical model checkpoints, standardized model notation, and documented execution conventions to support experiment reproduction, continued training, fine-tuning, and further model development.
-
-Readers should consult the original paper for the formal model names, notation, and mathematical definitions associated with each MCP variant.
-
-- Full article: [Wang & Gupta (2024)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024WR037224)
-- DOI: [10.1029/2024WR037224](https://doi.org/10.1029/2024WR037224)
-
-> Wang, Y.-H., & Gupta, H. V. (2024). Towards interpretable physical-conceptual catchment-scale hydrological modeling using the mass-conserving-perceptron. *Water Resources Research, 60*(10), e2024WR037224. https://doi.org/10.1029/2024WR037224
-
-> Boyle, D. P. (2000). *Multicriteria Calibration of Hydrologic Models*. University of Arizona, Department of Hydrology and Water Resources, Tucson.
-
-# Mass-Conserving Perceptron (MCP) HyMod Architecture Model Zoo
-
-This repository organizes the research code accompanying Wang & Gupta (2024) into a documented collection of mass-conserving-perceptron (MCP) models. The implementations were originally released on [Zenodo](https://zenodo.org/records/13840681) and have since been cleaned, refactored, and reorganized with assistance from OpenAI's ChatGPT (GPT-6.1 Sol, Max intelligence mode).
-
 ## Quick Start
 
 ### Requirements
@@ -39,9 +14,9 @@ python -m pip install -r requirements.txt
 
 ### Leaf River Data
 
-The example data are provided in `20220527-MDUPLEX-LeafRiver/`, which is the default data directory used by the training and evaluation scripts.
+The example data are provided in `20220527-MDUPLEX-LeafRiver/`, the default data directory used by the training and evaluation scripts.
 
-- `LeafRiverDaily_43YR.txt`: daily precipitation (`P`), potential evapotranspiration (`PET`), and streamflow (`Q`), all in mm/day.
+- `LeafRiverDaily_43YR.txt`: daily precipitation (`P`), potential evapotranspiration (`PET`), and streamflow (`Q`), in that column order and all in mm/day.
 - `LeafRiverDaily_43YR_Flag.txt`: flags identifying the data subsets used for model spin-up, training, selection, and testing.
 
 | Flag | Data subset |
@@ -55,7 +30,7 @@ The data sequence includes three repetitions of water year 1949 for spin-up, fol
 
 ### Pretrained Checkpoints
 
-The `MA1`–`MA6` folders contain the corresponding model scripts and pretrained Leaf River checkpoints. These checkpoints can be used for direct evaluation or as starting points for continued training and fine-tuning.
+Pretrained Leaf River checkpoints are included in the model folders. They can be used for direct evaluation or as starting points for continued training and fine-tuning.
 
 For example, evaluate the supplied MA₁ checkpoint from the repository root:
 
@@ -63,17 +38,17 @@ For example, evaluate the supplied MA₁ checkpoint from the repository root:
 python MA1/evaluate_Main_MA1_clean.py
 ```
 
-Additional training and evaluation examples are provided in [Running the Models](#running-the-models).
+Additional examples are provided in [Running the Models](#running-the-models).
 
 ## HyMod-Like Conceptual Reference
 
-The conceptual reference is the three-tank, two-flow-path HyMod-like structure inspired by Boyle (2000), as illustrated in Figure 1. The three tanks represent soil-moisture storage, surface-routing storage, and groundwater storage, while the two flow pathways represent surface and subsurface flow.
+The conceptual reference is the three-tank, two-flow-path HyMod-like structure inspired by Boyle (2000), illustrated in Figure 1. Its three tanks represent soil-moisture storage, surface-routing storage, and groundwater storage. The two flow pathways represent surface and subsurface flow.
 
 ![Three-tank, two-flow-path HyMod-like MCP architecture](Figure1.png)
 
 *Figure 1. MCP representation of the three-tank, two-flow-path HyMod-like conceptual structure adopted in this study.*
 
-**Note:** HyMod has several versions that differ in the number and arrangement of storage and routing elements. This study adopts the three-tank, two-flow-path representation shown in Figure 1 as its conceptual reference, with MCP gating functions used to describe the storage and flow processes.
+**Note:** HyMod has several versions with different storage and routing configurations. The structure shown in Figure 1 is the conceptual version adopted in this study, with MCP gating functions describing the storage and flow processes.
 
 ## MCP-Based Model Architectures
 
@@ -85,13 +60,13 @@ Compared with conventional conceptual models, these architectures replace time-c
 
 *Figure 2. Detailed structures of the six main MCP-based model architectures, MA₁–MA₆.*
 
-Figure 3 provides a complementary conceptual overview, highlighting the number of storage states and streamflow pathways represented by each architecture.
+Figure 3 provides a complementary conceptual overview of the storage states and streamflow pathways represented by each architecture.
 
 ![Conceptual comparison of storage states and flow pathways](Figure3.png)
 
 *Figure 3. Simplified conceptual representations of MA₁–MA₆, showing their storage elements and streamflow pathways.*
 
-| Model | Storage states | Flow pathways | Conceptual representation |
+| Model | Storage states | Streamflow pathways | Conceptual representation |
 | :--- | :---: | :---: | :--- |
 | MA₁ | 1 | 1 | Soil-moisture storage only |
 | MA₂ | 1 | 2 | Soil-moisture storage with two outlet flow pathways |
@@ -100,19 +75,17 @@ Figure 3 provides a complementary conceptual overview, highlighting the number o
 | MA₅ | 3 | 2 | Soil-moisture, surface-routing, and groundwater storage |
 | MA₆ | 3 | 3 | MA₅ with an additional direct overland-flow pathway |
 
-The collection also includes variants incorporating input bypass and groundwater mass relaxation.
+Additional variants incorporate input bypass and groundwater mass relaxation.
 
 ### Progressive Model Development
 
-The models were trained using a progressive model development strategy. As new storage elements or flow pathways were introduced, parameters associated with components shared with earlier architectures were initialized from their previously trained values. Newly introduced components received new parameter initialization. The inherited parameters remained trainable and were further adjusted together with the new parameters.
+The models were developed and trained progressively. Parameters for components retained from earlier architectures were initialized with their previously trained values. Newly introduced components received new parameter initializations, and both inherited and new parameters were adjusted during training.
 
 For example, MA₅ inherited initial parameter values for its soil-moisture, surface-routing, and groundwater components from MA₂, MA₃, and MA₄, respectively.
 
 ## Running the Models
 
-The scripts for MA₁–MA₆ are organized in the corresponding `MA1`–`MA6` folders. The repository provides training and evaluation scripts, historical checkpoints, standardized model notation, and documented execution conventions to support experiment reproduction, continued training, fine-tuning, and further model development.
-
-Run the following example commands from the repository root to work with MA₁.
+The scripts for MA₁–MA₆ are organized in the corresponding `MA1`–`MA6` folders. Run the following example commands from the repository root to work with MA₁.
 
 ### Continue Training or Fine-Tune MA₁
 
@@ -120,7 +93,7 @@ Run the following example commands from the repository root to work with MA₁.
 python MA1/mcpbrnn_Main_MA1_clean.py --epoch_no 100 --case_no 1 --checkpoint model_epoch27.pt
 ```
 
-This command loads the supplied MA₁ checkpoint and performs 100 additional training epochs. The case identifier `1` is used to name the output folder and files. The script saves the checkpoint with the highest selection-set KGE obtained during the current run.
+This command loads the supplied MA₁ checkpoint and runs 100 additional training epochs. The case identifier `1` is used to name the output folder and files. The script saves the checkpoint with the highest selection-set KGE obtained during the current run.
 
 ### Evaluate a Pretrained MA₁ Checkpoint
 
@@ -134,9 +107,9 @@ This command evaluates the checkpoint without updating its parameters and export
 
 | Argument | Purpose |
 | :--- | :--- |
-| `--epoch_no` | Number of training epochs to run; used by the training script |
-| `--case_no` | Case identifier used to name training outputs |
-| `--checkpoint` | Model checkpoint to load for training or evaluation |
+| `--epoch_no` | Number of training epochs to run; training only |
+| `--case_no` | Case identifier used to name training outputs; training only |
+| `--checkpoint` | Compatible model checkpoint to load for training or evaluation |
 
 For MA₁, both scripts default to `model_epoch27.pt` if `--checkpoint` is omitted. Relative checkpoint paths are resolved from the script's folder. For other architectures, use the corresponding scripts and compatible checkpoints in their model folders.
 
@@ -150,3 +123,4 @@ Readers should consult the original paper for the formal model names, notation, 
 > Wang, Y.-H., & Gupta, H. V. (2024). Towards interpretable physical-conceptual catchment-scale hydrological modeling using the mass-conserving-perceptron. *Water Resources Research, 60*(10), e2024WR037224. https://doi.org/10.1029/2024WR037224
 
 > Boyle, D. P. (2000). *Multicriteria Calibration of Hydrologic Models*. University of Arizona, Department of Hydrology and Water Resources, Tucson.
+
