@@ -60,7 +60,7 @@ Compared with conventional conceptual models, these architectures replace time-c
 
 *Figure 2. Detailed structures of the six main MCP-based model architectures, MA₁–MA₆.*
 
-Figure 3 provides a complementary conceptual overview of the storage states and streamflow pathways represented by each architecture.
+Figure 3 illustrates how a catchment can be conceptualized as a graph, with nodes representing physically interpretable storage states and links representing water transfers and flow pathways. Different numbers and arrangements of nodes and links define alternative hypotheses about catchment storage and flow processes. The six architectures shown here illustrate this approach; users can also propose additional architectures and test the corresponding hypotheses within the MCP framework.
 
 ![Conceptual comparison of storage states and flow pathways](Figure3.png)
 
