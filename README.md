@@ -83,6 +83,14 @@ The models were developed and trained progressively. Parameters for components r
 
 For example, MA₅ inherited initial parameter values for its soil-moisture, surface-routing, and groundwater components from MA₂, MA₃, and MA₄, respectively.
 
+### Input-Bypass Variants
+
+The paper examines two input-bypass formulations. **BP₁** represents saturation-excess runoff using a learned soil-moisture storage capacity, with excess precipitation bypassing the storage. **BP₂** uses a gating function that depends on both soil-moisture storage and precipitation intensity, allowing it to represent a combination of saturation-excess and infiltration-excess processes. These variants are provided for all six architectures in the `MA1-BP1`–`MA6-BP1` and `MA1-BP2`–`MA6-BP2` folders.
+
+### Groundwater Mass Relaxation
+
+For MA₄, MA₅, and MA₆, which include an explicit groundwater tank, we also tested a mass-relaxation gate that allows state-dependent, bidirectional water exchanges with the surrounding environment. These cases are provided in the `MA4-GWMR`, `MA5-GWMR`, and `MA6-GWMR` folders. Our earlier single-node MCP study introduced several mass-relaxation formulations; the groundwater variants included here use only the **Regular-Relaxed** formulation. For the other formulations and their implementations, see the [MCP Single-Node Model Zoo](https://github.com/YuanHWang/MCP-SingleNode-ModelZoo).
+
 ## Running the Models
 
 The scripts for MA₁–MA₆ are organized in the corresponding `MA1`–`MA6` folders. Run the following example commands from the repository root to work with MA₁.
