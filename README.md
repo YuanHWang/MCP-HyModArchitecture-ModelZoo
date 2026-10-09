@@ -63,9 +63,7 @@ The conceptual reference is the three-tank, two-flow-path HyMod-like structure i
 | MA₆ | 3 | 3 | MA₅ with an additional direct overland-flow pathway |
 
 
-Figure 2 presents the six main MCP-based model architectures, MA₁–MA₆. Each node represents a physically interpretable conceptual storage state, while the links represent water transfers and flow pathways.
-
-Compared with conventional conceptual models, these architectures replace time-constant coefficients for flow partitioning and storage release with time-variable gating functions that respond to the evolving states and relevant inputs. The parameters defining these functions remain fixed during evaluation, while the gate values vary over time.
+Figure 2 presents the six main MCP-based model architectures, MA₁–MA₆. Each node represents a physically interpretable conceptual storage state, while the links represent water transfers and flow pathways. Compared with conventional conceptual models, these architectures replace time-constant coefficients for flow partitioning and storage release with time-variable gating functions that respond to the evolving states and relevant inputs. The parameters defining these functions remain fixed during evaluation, while the gate values vary over time.
 
 ![Six main MCP-based model architectures](Figure2.png)
 
