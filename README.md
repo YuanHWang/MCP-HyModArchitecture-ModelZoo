@@ -85,11 +85,21 @@ For example, MA₅ inherited initial parameter values for its soil-moisture, sur
 
 ### Input-Bypass Variants
 
-The paper examines two input-bypass formulations. **BP₁** represents saturation-excess runoff using a learned soil-moisture storage capacity, with excess precipitation bypassing the storage. **BP₂** uses a gating function that depends on both soil-moisture storage and precipitation intensity, allowing it to represent a combination of saturation-excess and infiltration-excess processes. These variants are provided for all six architectures in the `MA1-BP1`–`MA6-BP1` and `MA1-BP2`–`MA6-BP2` folders.
+The paper examines two input-bypass formulations. $BP_1$ represents saturation-excess runoff using a learned soil-moisture storage capacity, with excess precipitation bypassing the storage. $BP_2$ uses a gating function that depends on both soil-moisture storage and precipitation intensity, allowing it to represent a combination of saturation-excess and infiltration-excess processes. Following the paper's notation, these variants are denoted by $MA_iBP_1$ and $MA_iBP_2$, where $i=1,\ldots,6$.
 
 ### Groundwater Mass Relaxation
 
-For MA₄, MA₅, and MA₆, which include an explicit groundwater tank, we also tested a mass-relaxation gate that allows state-dependent, bidirectional water exchanges with the surrounding environment. These cases are provided in the `MA4-GWMR`, `MA5-GWMR`, and `MA6-GWMR` folders. Our earlier single-node MCP study introduced several mass-relaxation formulations; the groundwater variants included here use only the **Regular-Relaxed** formulation. For the other formulations and their implementations, see the [MCP Single-Node Model Zoo](https://github.com/YuanHWang/MCP-SingleNode-ModelZoo).
+For $MA_4$, $MA_5$, and $MA_6$, which include an explicit groundwater tank, we also tested a mass-relaxation gate that allows state-dependent, bidirectional water exchanges with the surrounding environment. These variants are denoted by $MA_iMR_{gw}^{\sigma}$, where $i=4,5,6$. Our earlier single-node MCP study introduced several mass-relaxation formulations; the groundwater variants included here use only the **Regular-Relaxed** formulation. For the other formulations and their implementations, see the [MCP Single-Node Model Zoo](https://github.com/YuanHWang/MCP-SingleNode-ModelZoo).
+
+### Model Notation and Repository Folders
+
+| Paper notation | Repository folder |
+| :--- | :--- |
+| $MA_iBP_1$, $i=1,\ldots,6$ | `MA1-BP1`–`MA6-BP1` |
+| $MA_iBP_2$, $i=1,\ldots,6$ | `MA1-BP2`–`MA6-BP2` |
+| $MA_4MR_{gw}^{\sigma}$ | `MA4-GWMR` |
+| $MA_5MR_{gw}^{\sigma}$ | `MA5-GWMR` |
+| $MA_6MR_{gw}^{\sigma}$ | `MA6-GWMR` |
 
 ## Running the Models
 
